@@ -2,4 +2,4 @@ import express, { Router } from "express";
 
 const router = express.Router();
 
-export default Router;
+export default router;

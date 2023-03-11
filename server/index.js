@@ -11,28 +11,32 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
+//data imports
+import User from "./models/User.js";
+import { dataUser } from "./data/index.js";
+
 /*configs */
 
 dotenv.config();
 const app = express();
 
-app.use(express.json());
+app.use((req, res, next) => {
+  console.log(`${req.method} request received for ${req.originalUrl}`);
+  next();
+});
 
+app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-
 app.use(morgan("common"));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(cors());
 
 /*routes*/
-
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
-app.use("management", managementRoutes);
+app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
 
 /*mongoose*/
@@ -46,5 +50,7 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server up on ${PORT}`));
+
+    //User.insertMany(dataUser);
   })
   .catch((err) => console.log(`${err.message} not connected`));
