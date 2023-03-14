@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Header from "components/Header";
 import React from "react";
 import { useGetUserPerformanceQuery } from "state/api";
-import CustomColumnMenu from "components/DataGridCustomColumnMenu";
+//import CustomColumnMenu from "components/DataGridCustomColumnMenu";
 import { useSelector } from "react-redux";
 
 const columns = [

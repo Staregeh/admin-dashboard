@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Header from "components/Header";
 import React from "react";
 import { useGetAdminsQuery } from "state/api";
-import CustomColumnMenu from "components/DataGridCustomColumnMenu";
+//import CustomColumnMenu from "components/DataGridCustomColumnMenu";
 
 const columns = [
   {
